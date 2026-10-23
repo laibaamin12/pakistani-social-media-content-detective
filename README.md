@@ -1,50 +1,75 @@
-Social_Media_Sentiment_Analysis.ipynb
+# Pakistani Social Media Content Detective
 
-Social Media Sentiment & Engagement Analysis
-An end-to-end exploratory data analysis (EDA) of 2,260+ social media posts across five platforms, exploring how sentiment, platform, follower size, and timing relate to post engagement.
+An end-to-end exploratory data analysis (EDA) of 3,000 simulated social media posts from Pakistani brands across five platforms, exploring which content gets Pakistani audiences to engage.
 
-Project Overview
+## Project Overview
+
 This project analyzes social media post data to understand:
 
-Which platforms and content types generate the most engagement (likes, shares, comments)
-How sentiment (Positive / Negative / Neutral) varies by platform and country
-Whether follower count or verification status affects engagement
-Time-based patterns in posting volume and engagement (day of week, month)
-Relationships between engagement metrics
-Files
-File	Description
-Social_Media_Sentiment_Analysis.ipynb	Full Jupyter/Colab notebook — data loading, cleaning, EDA, visualizations, and insights
-social_media_sentiment_raw.csv	Raw, uncleaned dataset (2,260 rows, 13 columns)
-Dataset
-Records: 2,260 posts (before cleaning)
-Platforms: Twitter, Instagram, Facebook, TikTok, LinkedIn
-Countries: 12 countries covered
-Time range: January 2023 – December 2024
-Columns: post_id, timestamp, platform, user, followers_count, verified, text, hashtags, country, likes, retweets_shares, comments, sentiment
-Tools & Libraries
-Python
-Pandas, NumPy — data cleaning and manipulation
-Matplotlib, Seaborn — visualizations
-Google Colab / Jupyter Notebook
-Data Cleaning Steps
-Removed duplicate rows
-Fixed data types (e.g., followers_count stored as text with commas, timestamp converted to datetime)
-Standardized inconsistent text casing/whitespace in categorical columns
-Handled missing values with column-appropriate strategies (imputation, fill, or row removal)
-Corrected invalid values (negative likes)
-Created derived features: total_engagement, engagement_rate, day_of_week, hour, hashtag_count, follower_tier
-Visualizations Included
-Pie chart, bar plots, stacked bar, histograms, box plot, scatter plot, correlation heatmap, line chart (monthly trend), grouped bar chart, horizontal bar chart, and a second heatmap (platform × day of week) — 12 visualizations in total.
+- Which platform performs better
+- Which content type gets more engagement (likes, shares, comments)
+- Which topics and hashtags are popular
+- What sentiment generates engagement
+- Which day and time work best
+- Which audience segment is most responsive
+- What a Pakistani brand should post next
 
-Key Insights
-TikTok drives the highest engagement per post, while LinkedIn shows the lowest — consistent with each platform's content style and audience.
-Positive sentiment correlates with higher engagement, but negative posts aren't far behind, suggesting emotional intensity (not just positivity) drives interaction.
-Engagement metrics move together — likes, shares, and comments are strongly correlated.
-Verified accounts get a higher engagement rate per 1,000 followers than unverified accounts of similar size.
-Posting activity and engagement show mild weekly patterns, slightly higher midweek than on weekends.
-How to Run
-Clone this repository or download the files.
-Open Social_Media_Sentiment_Analysis.ipynb in Google Colab or Jupyter Notebook.
-Upload social_media_sentiment_raw.csv when prompted (or place it in the same directory / your mounted Google Drive).
-Run all cells in order.
-Author
+## Files
+
+| File | Description |
+| --- | --- |
+| `pakistan_socialmedia.ipynb` | Full Jupyter notebook: data loading, cleaning, analysis, visualizations, and summary |
+| `pakistan_social_media_posts.csv` | Raw, uncleaned simulated dataset (3,030 rows, 17 columns) |
+| `critique.md` | My check of the AI-generated 2-week marketing plan |
+
+## Dataset
+
+**Note: the dataset is simulated, so results demonstrate the method and are not evidence about real audience behaviour.**
+
+- **Records:** 3,030 posts (before cleaning)
+- **Platforms:** TikTok, Facebook, Instagram, YouTube, X (Twitter)
+- **Cities:** Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Peshawar, Quetta, Multan
+- **Time range:** January 2024 to December 2024
+- **Columns:** `post_id`, `timestamp`, `platform`, `brand_category`, `content_type`, `topic`, `caption`, `hashtags`, `language`, `city`, `audience_segment`, `followers_count`, `verified`, `likes`, `shares`, `comments`, `sentiment`
+
+## Tools & Libraries
+
+- Python
+- Pandas, NumPy: data cleaning and manipulation
+- Matplotlib, Seaborn: visualizations
+- Jupyter Notebook
+
+## Data Cleaning Steps
+
+- Removed 30 duplicate rows
+- Standardized inconsistent platform names (for example `tiktok` to `TikTok`)
+- Corrected invalid values (negative likes)
+- Filled missing hashtags and dropped rows with missing `followers_count`
+- Converted `timestamp` to datetime
+- Created derived features: `total_engagement`, `engagement_rate`, `day_of_week`, `hour`, `hashtag_count`, `follower_tier`
+
+Engagement rate = (likes + shares + comments) / followers x 1,000. Results use the median.
+
+## Visualizations Included
+
+Bar plots (platform, content type, hashtags, sentiment, audience segment) and a day-by-hour heatmap.
+
+## Key Insights
+
+1. **TikTok drives the highest engagement** (39.2 per 1,000 followers for fashion posts), followed by Facebook (28.0). X (Twitter) is lowest (18.6).
+2. **Short Video/Reel is the best content type** (42.4), but Live Stream is almost as strong (40.3).
+3. **Cricket & PSL is the top topic** (48.3), ahead of Ramadan & Eid (37.6).
+4. **Friday is the best day** (34.4), followed by Sunday (30.0) and Saturday (29.3).
+5. **Hours 8pm to 11pm are nearly tied** (about 38 to 39), so an evening window works better than a single hour.
+6. **AI-assisted plan:** I asked an AI for a 2-week posting plan for a Lahore clothing brand and checked it against my data. See `critique.md`.
+
+## How to Run
+
+1. Clone this repository or download the files.
+2. Open `pakistan_socialmedia.ipynb` in Jupyter Notebook or Google Colab.
+3. Place `pakistan_social_media_posts.csv` in the same directory as the notebook.
+4. Run all cells in order.
+
+## Author
+
+Laiba Amin
